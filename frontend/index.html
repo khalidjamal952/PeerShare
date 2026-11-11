@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>PeerShare - File Sharing</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>PeerShare</h1>
+      <p>Share files directly with anyone</p>
+
+      <!-- Room Section -->
+      <div class="room-section">
+        <h2>Connect with Friend</h2>
+
+        <button id="createRoom">Create Room</button>
+
+        <p>OR</p>
+
+        <input type="text" id="roomId" placeholder="Enter Room ID" />
+
+        <button id="joinRoom">Join Room</button>
+
+        <p id="roomCode"></p>
+
+        <button id="copyRoomBtn" type="button" hidden>📋 Copy Room ID</button>
+
+        <!-- QR Code Section -->
+        <div id="qrSection" hidden>
+          <h3>Scan QR Code to Join</h3>
+          <div id="qrCode"></div>
+          <p>Scan this QR code using another device</p>
+        </div>
+        <p id="status">Not Connected</p>
+      </div>
+
+      <!-- File Sharing Section -->
+      <div class="file-section">
+        <h2>Share File</h2>
+
+        <div id="dropZone" class="drop-zone">
+          <p>📁 Drag & Drop your file here</p>
+          <p>OR</p>
+          <input type="file" id="fileInput" />
+        </div>
+
+        <button id="sendFile" disabled>Send File</button>
+
+        <p id="fileName"></p>
+
+        <progress id="progressBar" value="0" max="100"></progress>
+
+        <p id="progressText">0%</p>
+        <!-- File Transfer Speed & Time -->
+        <div class="transfer-info">
+          <p>Transfer Speed: <span id="transferSpeed">0 MB/s</span></p>
+          <p>Time Remaining: <span id="timeRemaining">--</span></p>
+        </div>
+      </div>
+
+      <!-- Received Files -->
+      <div class="received-section">
+        <h2>Received Files</h2>
+
+        <div id="receivedFiles">No files received yet.</div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/fileTransfer.js"></script>
+    <script src="js/webrtc.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
